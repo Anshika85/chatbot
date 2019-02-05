@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Web Socket Chat</title>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+    <style>
+       body{
+       	   margin-top:30px;
+       }
+
+       
+
+
+
+
+   </style>
+</head>
+<body>
+    <div class="container">
+        
+
+    	<div id="messageArea" class="row">
+    		
+    		<div class="col-md-12">
+                <div class="chat" id="feed"></div>
+                <div  id="chat"></div>
+
+
+                <form id="messageForm">
+                	<div class="form-group">
+                        <label>Enter Message</label>
+                        <textarea class="form-control" id="message"></textarea>
+                        <br/>
+                         <input  type="submit" class="btn btn-primary" value="Send Message"/>
+                        
+                	</div>
+                </form>	
+    		</div>	
+    	</div>
+    </div>
+
+
+
+
+    <script>
+         $(function(){
+         	var socket=io.connect();
+          var $feed=$('#feed');
+         	var $messageForm=$('#messageForm');
+         	var $message = $('#message');
+         	var $chat = $('#chat');
+            var $messageArea= $('#messageArea');
+            
+           
+      var y="chatbot";
+          var z="user";
+              
+         	$messageForm.submit(function(e){
+         		e.preventDefault();
+          
+         	     socket.emit('message',$message.val());
+         	    
+               $chat.append('<div class="well"<strong>'+z+'</strong> :'+$message.val()+'</div>');
+                $message.val(' ');
+
+         	});
+          
+           socket.on('fromserver', function(data){
+               $chat.append('<div class="well"><strong>'+y+'</strong> :'+data+'</div>');
+               
+           });
+           
+
+          
+         });
+
+    </script>	
+ </body>
+</html>

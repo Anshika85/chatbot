@@ -1,0 +1,9 @@
+//	User can enter these statements:
+1. Hi , hello , hiya  etc
+2. May i know about you! or would  you introduce yourself !
+3. I want to ask something. or I have some query  or Can u resolve my query ! etc
+4. what is weather ?
+5. Who is the PM of India?
+6. okay , thankyou!
+
+According to these statements chatbot will reply.
