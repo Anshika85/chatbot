@@ -4,7 +4,7 @@ var app=express();
 var server=require('http').createServer(app);
 var io=socket.listen(server);
 var apiai=require('apiai');
-var app1= apiai("a3eefdaaddb44d68933747cc675aa340");
+var app1= apiai("");
 
 server.listen(100);
 console.log("server running");
